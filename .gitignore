@@ -1,0 +1,7 @@
+# Python3 virtual environment
+venv/
+# Python3 cache
+__pycache__/
+
+# Any SQLite databases
+*.db
