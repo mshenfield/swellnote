@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import random
 import sqlite3
 
@@ -6,11 +6,15 @@ app = Flask(__name__)
 
 def _connect():
     # TODO: Run analysis_limit and optimize on disconnect
-    return sqlite3.connect(
+    con = sqlite3.connect(
         "message_surf.db",
         # Use SQLite's underlying auto commit, avoiding the python lib's
         # convoluted transaction management
         isolation_level=None)
+    cur = con.cursor()
+    cur.execute("pragma synchronous=NORMAL;")
+    cur.close()
+    return con
 
 def init_db():
     con = _connect()
@@ -22,6 +26,7 @@ CREATE TABLE IF NOT EXISTS message(
     abusive BOOLEAN
 );
     """)
+    cur.execute("pragma journal_mode=wal;")
     cur.close()
     con.close()
 
@@ -50,9 +55,13 @@ def get_random_message():
 
 @app.route("/message", methods=["POST"])
 def create_message():
+    content = request.form["content"]
+    if not 2 <= len(content) <= 1023:
+        raise Exception(f"Message must be between 2 and 1023 characters. It was {len(content)} characters.")
+
     con = _connect()
     cur = con.cursor()
-    # TODO: Buck up and use the request object :(
-    cur.execute("INSERT INTO message VALUES(NULL, ?, false)", ("Hello world",))
+    cur.execute("INSERT INTO message VALUES(NULL, ?, false)", (content,))
     cur.close()
     con.close()
+    return "", 201

@@ -4,4 +4,4 @@ venv/
 __pycache__/
 
 # Any SQLite databases
-*.db
+*.db*
