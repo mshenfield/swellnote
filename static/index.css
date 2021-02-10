@@ -169,7 +169,7 @@ body {
 }
 #message {
   /* Preserve white-space as the text is written */
-  white-space: pre;
+  white-space: pre-wrap;
 }
 
 #scroll {

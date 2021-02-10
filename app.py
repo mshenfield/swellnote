@@ -12,7 +12,12 @@ def _connect():
         # convoluted transaction management
         isolation_level=None)
     cur = con.cursor()
+    # Speed up writes 100x by sacrificing a bit of durability.  In the worst
+    # case, a hard reboot or disk failure will cause the loss of recent
+    # writes, but the database stays consistent.  Application restarts will
+    # still save data correctly.
     cur.execute("pragma synchronous=NORMAL;")
+    cur.execute("pragma journal_mode=wal;")
     cur.close()
     return con
 
@@ -26,14 +31,13 @@ CREATE TABLE IF NOT EXISTS message(
     abusive BOOLEAN
 );
     """)
-    cur.execute("pragma journal_mode=wal;")
     cur.close()
     con.close()
 
 @app.route("/message", methods=["GET"])
 def get_random_message():
     """Return a random message to play the part of 'message in a bottle'."""
-    # Efficiently gran a random message in O(logN) time, as described in
+    # Efficiently grab a random message in O(logN) time, as described in
     # https://stackoverflow.com/a/66085192/3925120. This part-Python version
     # runs about half as fast the "all in SQL" approach, but is  still extremely fast.
     #
