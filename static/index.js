@@ -1,15 +1,23 @@
-const quillButton = document.querySelector("#quill-button");
-const bottle = document.querySelector("#bottle");
-const messageOverlay = document.querySelector("#message-overlay");
-const message = document.querySelector("#message");
-const scroll = document.querySelector("#scroll");
-const editor = document.querySelector("#scroll .editor");
+const quillButton = document.querySelector(".quill-button");
+const bottle = document.querySelector("#incoming-bottle");
+const messageOverlay = document.querySelector(".message-overlay");
+const message = document.querySelector(".scroll__message");
+const scroll = document.querySelector(".scroll");
+const editor = document.querySelector(".scroll__editor");
 const sendButton = document.querySelector(".send-button");
 
+// Display the message overlay for the existing message...
 bottle.addEventListener("click", () => {
-  messageOverlay.classList.add("visible");
-  scroll.classList.add("read-only");
-  scroll.classList.remove("editable");
+  messageOverlay.classList.add("message-overlay--visible");
+  scroll.classList.add("scroll--read-only");
+  scroll.classList.remove("scroll--editable");
+});
+// ...and when creating new ones
+quillButton.addEventListener("click", () => {
+  messageOverlay.classList.add("message-overlay--visible");
+  scroll.classList.add("scroll--editable");
+  scroll.classList.remove("scroll--read-only");
+  editor.focus();
 });
 
 messageOverlay.addEventListener("click", (event) => {
@@ -21,12 +29,26 @@ messageOverlay.addEventListener("click", (event) => {
   dismissMessageOverlay();
 });
 
-quillButton.addEventListener("click", () => {
-  messageOverlay.classList.add("visible");
-  scroll.classList.add("editable");
-  scroll.classList.remove("read-only");
-  editor.focus();
-});
+function dismissMessageOverlay() {
+  // If a user has read the message, send the message away and reset the timer for the next message;
+  if (
+    scroll.classList.contains("scroll--read-only") &&
+    bottle.classList.contains("bottle--visible")
+  ) {
+    bottle.classList.remove("bottle--visible");
+    setTimeout(() => getMessage(), 30000);
+  }
+  messageOverlay.classList.remove("message-overlay--visible");
+}
+
+function getMessage() {
+  fetch("http://localhost:5000/message")
+    .then(res => res.text())
+    .then(content => {
+      message.textContent = content;
+      bottle.classList.add("bottle--visible");
+    });
+}
 
 sendButton.addEventListener("click", (event) => {
   event.preventDefault();
@@ -37,15 +59,6 @@ sendButton.addEventListener("click", (event) => {
 
   dismissMessageOverlay();
 });
-
-function getMessage() {
-  fetch("http://localhost:5000/message")
-    .then(res => res.text())
-    .then(content => {
-      message.textContent = content;
-      bottle.classList.add("appears");
-    });
-}
 
 /**
  * Post the user's message to the API.
@@ -64,17 +77,5 @@ function sendMessage() {
   });
 }
 
-function dismissMessageOverlay() {
-  // If a user has read the message, send the message away and reset the timer for the next message;
-  if (
-    scroll.classList.contains("read-only") &&
-    bottle.classList.contains("appears")
-  ) {
-    bottle.classList.remove("appears");
-    setTimeout(() => getMessage(), 30000);
-  }
-  messageOverlay.classList.remove("visible");
-}
-// TODO: Display character limit for editor.
-
+// Display a bottle 5 seconds after the page loads.
 setTimeout(() => getMessage(), 5000);

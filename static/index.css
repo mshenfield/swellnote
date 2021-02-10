@@ -7,6 +7,7 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Resets */
 html {
   box-sizing: border-box;
   height: 100%;
@@ -21,6 +22,9 @@ body {
   margin: 0;
 }
 
+/* End Resets */
+
+/* Landscape */
 #beach {
   display: flex;
   flex-direction: column;
@@ -52,7 +56,9 @@ body {
   flex-grow: 1;
 }
 
-#bottle {
+/* End Landscape */
+
+.bottle {
   --bottle-green: rgba(0, 100, 0, 0.8);
   position: absolute;
   left: 50%;
@@ -71,13 +77,13 @@ body {
   /* Fade out */
   transition: visibility 0s 5s, opacity 1s 4s ease-out;
 }
-#bottle.appears {
+.bottle--visible {
   visibility: visible;
   opacity: 1;
   /* Fade in */
   transition: visibility 0s 0s, opacity 2s ease-in;
 }
-#bottle .message {
+.bottle__message {
   position: absolute;
   bottom: 3px;
   left: 30%;
@@ -87,24 +93,20 @@ body {
   height: 65%;
   width: 10px;
 }
-#bottle .cork {
+.bottle__cork {
   background-color: wheat;
   height: 10px;
   width: 10px;
 }
-#bottle .top {
+.bottle__top {
   background-color: var(--bottle-green);
   border-top: darkgreen 2px solid;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   height: 12px;
   width: 15px;
-
-  /* Nudge down so it joins with the body when rotated. */
-  position: relative;
-  top: 1px;
 }
-#bottle .body {
+.bottle__body {
   background-color: var(--bottle-green);
   border-bottom: 2px solid darkgreen;
   border-radius: 3px;
@@ -116,7 +118,7 @@ body {
   justify-content: center;
 }
 
-#quill-button {
+.quill-button {
   /* Reset button appearance */
   -moz-appearance: none;
   appearance: none;
@@ -136,14 +138,14 @@ body {
   width: 40px;
 }
 
-#quill {
+.quill-button__quill {
   position: absolute;
   top: -10px;
   left: -10px;
   object-fit: contain;
 }
 
-#message-overlay {
+.message-overlay {
   --fade-duration: 400ms;
   visibility: hidden;
   opacity: 0;
@@ -162,37 +164,35 @@ body {
   height: 100%;
   width: 100%;
 }
-#message-overlay.visible {
+.message-overlay--visible {
   opacity: 1;
   visibility: visible;
   transition: opacity var(--fade-duration) ease-in, visibility 0s 0s;
 }
-#message {
-  /* Preserve white-space as the text is written */
-  white-space: pre-wrap;
-}
 
-#scroll {
+.scroll {
   background-color: wheat;
   min-height: 100px;
   width: 40%;
 }
-#scroll .top {
+.scroll__top {
   border-bottom: tan solid 3px;
-  position: relative;
 }
-#scroll .bottom {
+.scroll__bottom {
   border-top: tan solid 3px;
+}
+
+.scroll__edge {
   position: relative;
 }
 
-#scroll .background {
+.scroll__edge-background {
   background-color: wheat;
   height: 50px;
   position: relative;
 }
-#scroll .left,
-#scroll .right {
+.scroll__edge-left,
+.scroll__edge-right {
   position: absolute;
   top: 0px;
 
@@ -201,27 +201,31 @@ body {
   height: 100%;
   width: 10px;
 }
-#scroll .left {
+.scroll__edge-left {
   left: -5px;
 }
-#scroll .right {
+.scroll__edge-right {
   right: -5px;
 }
 /* Display the message or editor only when the appropriate class is set on the scroll */
-#scroll .message,
-#scroll .editor-container {
+.scroll__message,
+.scroll__editor-container {
   display: none;
 }
-#scroll.read-only .message,
-#scroll.editable .editor-container {
+.scroll--read-only .scroll__message,
+.scroll--editable .scroll__editor-container {
   display: inherit;
 }
-#scroll .message,
-#scroll .editor {
+.scroll__message {
+  /* Preserve white-space as the text is written */
+  white-space: pre-wrap;
+}
+.scroll__message,
+.scroll__editor {
   font: 50px/1.4 "Kristi", serif;
   padding: 25px;
 }
-#scroll .editor {
+.scroll__editor {
   /* Reset the textarea appearance */
   -moz-appearance: none;
   appearance: none;
@@ -231,18 +235,18 @@ body {
   height: 100%;
   width: 100%;
 }
-#scroll .editor:focus {
+.scroll__editor:focus {
   outline: wheat;
 }
 
-#scroll.read-only .send-button {
+.scroll--read-only .send-button {
   display: none;
 }
-#scroll.editable .send-button {
+.scroll--editable .send-button {
   display: inherit;
 }
 
-#scroll .bottom .background {
+.scroll__bottom .scroll__edge-background {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -260,6 +264,7 @@ body {
   cursor: pointer;
   padding: 3px;
 }
+
 mute-toggle {
   position: absolute;
   left: 10px;

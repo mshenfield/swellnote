@@ -9,37 +9,37 @@
   <div id="horizon"></div>
   <div id="ocean"></div>
   <div id="sand"></div>
-  <div id="bottle" >
-    <div class="message"></div>
-    <div class="cork"></div>
-    <div class="top"></div>
-    <div class="body"></div>
+  <div id="incoming-bottle" class="bottle" >
+    <div class="bottle__message"></div>
+    <div class="bottle__cork"></div>
+    <div class="bottle__top"></div>
+    <div class="bottle__body"></div>
   </div>
   <mute-toggle src="ocean.wav"></mute-toggle>
-  <button type="button" id="quill-button">
-    <img id="quill" height="50" width="55" src="8-bit-quill.png">
+  <button type="button" class="quill-button">
+    <img class="quill-button__quill" height="50" width="55" src="8-bit-quill.png">
   </button>
 </div>
 
-<div id="message-overlay">
-  <div id="scroll">
-    <div class="top">
-      <!-- Order matters here - the right side is hidden behind the background to give a 3d effect. For .bottom as well. -->
-      <div class="right"></div>
-      <div class="background"></div>
-      <div class="left"></div>
+<div class="message-overlay">
+  <div class="scroll">
+    <div class="scroll__top scroll__edge">
+      <!-- Order matters here - the right side is hidden behind the background to give a 3d effect -->
+      <div class="scroll__edge-right"></div>
+      <div class="scroll__edge-background"></div>
+      <div class="scroll__edge-left"></div>
     </div>
-    <div id="message" class="message">
+    <div class="scroll__message">
     </div>
-    <div class="editor-container">
-      <textarea min=2 max=600 class="editor"></textarea>
+    <div class="scroll__editor-container">
+      <textarea min=2 max=600 class="scroll__editor"></textarea>
     </div>
-    <div class="bottom">
-      <div class="right"></div>
-      <div class="background">
+    <div class="scroll__bottom scroll__edge">
+      <div class="scroll__edge-right"></div>
+      <div class="scroll__edge-background">
         <button class="send-button" type="button">Send</button>
       </div>
-      <div class="left"></div>
+      <div class="scroll__edge-left"></div>
     </div>
   </div>
 </div>
