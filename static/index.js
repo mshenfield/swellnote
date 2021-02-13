@@ -1,5 +1,5 @@
 const quillButton = document.querySelector(".quill-button");
-const bottle = document.querySelector("#incoming-bottle");
+const bottle = document.querySelector("#bottle");
 const messageOverlay = document.querySelector(".message-overlay");
 const message = document.querySelector(".scroll__message");
 const scroll = document.querySelector(".scroll");

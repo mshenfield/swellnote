@@ -5,21 +5,22 @@
 <script defer src="index.js"></script>
 <script defer src="mute-toggle.js"></script>
 
-<div id="beach">
-  <div id="horizon"></div>
-  <div id="ocean"></div>
-  <div id="sand"></div>
-  <div id="incoming-bottle" class="bottle" >
-    <div class="bottle__message"></div>
-    <div class="bottle__cork"></div>
-    <div class="bottle__top"></div>
-    <div class="bottle__body"></div>
+<div id="sky">
+  <div id="sun"></div>
+</div>
+<div id="ocean"></div>
+<div id="sand">
+  <div id="surf-and-sand">
+    <img src="surf.svg" id="surf">
+    <img src="wet-sand.svg" id="wet-sand">
   </div>
+  <img src="bottle.svg" id="bottle" class="bottle">
   <mute-toggle src="ocean.wav"></mute-toggle>
   <button type="button" class="quill-button">
     <img class="quill-button__quill" height="50" width="55" src="8-bit-quill.png">
   </button>
 </div>
+
 
 <div class="message-overlay">
   <div class="scroll">

@@ -25,53 +25,80 @@ body {
 /* End Resets */
 
 /* Landscape */
-#beach {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+#sky {
+  background: linear-gradient(180deg, #00659E 16%, #4197C7 61.87%, #87C0DF 88.54%, #A3DAF9 98.44%);
+  height: 33.33%;
+  min-height: 250px;
 }
 
-#horizon {
-  height: 10%;
-  background: linear-gradient(to bottom, orange, orange 40%, purple);
+#sun {
+  border-radius: 50%;
+  background: linear-gradient(180deg, #F79400 36.12%, #F7A934 68.84%, #F9C476 100%);
+  --size: 160px;
+  height: var(--size);
+  width: var(--size);
+  
+  position: absolute;
+  right: 220px;
+  top: 10%;
+}
+
+#ocean {
+  background: linear-gradient(180deg, #1071A8 0%, #318ABD 50.25%, #7AC7CC 100%);
+  height: 28.33%;
+}
+
+#surf-and-sand {
+  height: 20%;
+  position: relative;
+  top: -6%;
+  width: 100%;
+}
+
+/* The SVGs scale based on the width, so no height should be specified.
+*/
+#surf {
+  position: absolute;
+  width: 100%;
 }
 
 @keyframes wave {
   0% {
-    height: 50%;
+    transform: scaleY(80%);
   }
   100% {
-    height: 65%;
+    transform: scaleY(120%);
   }
 }
 
-#ocean {
-  background-color: deepskyblue;
-  height: 50%;
-  animation: wave 7s infinite alternate ease-out;
+#wet-sand {
+  position: absolute;
+  width: 100%;
+  transform-origin: top;
+  transform: scaleY(80%);
+  animation: wave 3s infinite alternate ease-out;
 }
 
 #sand {
-  background: darkgoldenrod;
-  flex-grow: 1;
+  background: linear-gradient(180deg, #C1B0B8 0%, #FFE1C2 78.65%);
+  height: 38.33%;
+  min-height: 200px;
+  position: relative;
+}
+
+#bottle {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+
+  height: 73px;
+  width: 100px;
 }
 
 /* End Landscape */
 
 .bottle {
-  --bottle-green: rgba(0, 100, 0, 0.8);
-  position: absolute;
-  left: 50%;
-  top: 68%;
-  transform: rotate(-10deg);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
   cursor: pointer;
-
   visibility: hidden;
   opacity: 0;
   /* Fade out */
@@ -82,40 +109,6 @@ body {
   opacity: 1;
   /* Fade in */
   transition: visibility 0s 0s, opacity 2s ease-in;
-}
-.bottle__message {
-  position: absolute;
-  bottom: 3px;
-  left: 30%;
-  transform: rotate(10deg);
-
-  background-color: #f5deb3aa;
-  height: 65%;
-  width: 10px;
-}
-.bottle__cork {
-  background-color: wheat;
-  height: 10px;
-  width: 10px;
-}
-.bottle__top {
-  background-color: var(--bottle-green);
-  border-top: darkgreen 2px solid;
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  height: 12px;
-  width: 15px;
-}
-.bottle__body {
-  background-color: var(--bottle-green);
-  border-bottom: 2px solid darkgreen;
-  border-radius: 3px;
-  height: 50px;
-  width: 25px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .quill-button {
