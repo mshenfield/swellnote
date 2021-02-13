@@ -1,12 +1,12 @@
-# Message Surf
+# Swell Note
 
-Message in a bottle simulator.  Enjoy a peaceful moment at the beach, reading messages from strangers.
+Message in a bottle simulator.  Enjoy a peaceful moment at the beach, reading messages from strangers and sending some into the ether.
 
 ## Architecture
 
 This project uses:
 
-* [HTML/CSS/JS](https://developer.mozilla.org/en-US/docs/Learn) - No frontend frameworks were ~~harmed~~ used while making Message Surf.
+* [HTML/CSS/JS](https://developer.mozilla.org/en-US/docs/Learn) - The frontend is fairly simple, and just uses the tools built into the Web Platform.
 
 * [Flask](https://flask.palletsprojects.com/) - The API that serves random messages and stores new messages is a simple Flask application.  In production, Flask runs under [Gunicorn](https://gunicorn.org/).  In the future I may deploy an nginx frontend to Gunicorn to buffer connections.
 
@@ -19,9 +19,6 @@ This project uses:
   * Allow users the choice of throwing away a message or sending it back out.  Delete or block the message from appearing if it is thrown away.
   * Store an identifier in the user's browser and require it to access the API. Store it so that we can quickly identify/delete messages from spammy users.
   * Limit messages to words from an English dictionary.
-* i18n - translate to a few languages.  Allow users to specify what language the message is written in, and what languages they'd like to receive.
-* Animate the bottle floating in and floating out.
-* Animate sending a bottle out when you write a message (maybe with a different colored bottle?)
 
 ## Art
 Art is by April Petry.

@@ -7,7 +7,7 @@ app = Flask(__name__)
 def _connect():
     # TODO: Run analysis_limit and optimize on disconnect
     con = sqlite3.connect(
-        "message_surf.db",
+        "swell-note.db",
         # Use SQLite's underlying auto commit, avoiding the python lib's
         # convoluted transaction management
         isolation_level=None)

@@ -39,7 +39,7 @@ body {
   width: var(--size);
   
   position: absolute;
-  right: 220px;
+  right: 12%;
   top: 10%;
 }
 
@@ -120,22 +120,23 @@ body {
   border: none;
 
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 21%;
+  right: 3%;
 
-  background-color: transparent;
-  border: deepskyblue 3px solid;
-  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #FFFFFF;
+  border-radius: 10px;
+  transform: rotate(45deg);
   cursor: pointer;
-  height: 40px;
-  width: 40px;
+  height: 64px;
+  width: 64px;
 }
 
 .quill-button__quill {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  object-fit: contain;
+  /* Counteract the parent element's rotation */
+  transform: rotate(-45deg);
+  height: 45px;
+  width: 35px;
 }
 
 .message-overlay {
@@ -262,6 +263,8 @@ mute-toggle {
   position: absolute;
   left: 10px;
   bottom: 10px;
+  height: 64px;
+  width: 64px;
 
   background-color: rgba(0, 0, 0, .2);
   border: solid 3px deepskyblue;
