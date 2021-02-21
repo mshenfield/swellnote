@@ -5,3 +5,6 @@ __pycache__/
 
 # Any SQLite databases
 *.db*
+
+# Any personal notes about deployment, thoughts, etc.
+PRIVATE.md
