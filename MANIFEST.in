@@ -1,1 +1,2 @@
-graft src/static
+graft swellnote/static
+global-exclude *.py[cod]
