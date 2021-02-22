@@ -1,2 +1,4 @@
 graft swellnote/static
+graft swellnote/deploy
+
 global-exclude *.py[cod]

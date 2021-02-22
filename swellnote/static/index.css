@@ -213,6 +213,8 @@ body {
 .scroll__message {
   /* Preserve white-space as the text is written */
   white-space: pre-wrap;
+  max-height: 80vh;
+  overflow-y: scroll;
 }
 .scroll__message,
 .scroll__editor {
