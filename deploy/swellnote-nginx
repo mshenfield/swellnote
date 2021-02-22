@@ -33,7 +33,7 @@ server {
     #
     # include snippets/snakeoil.conf;
 
-    root /var/www/swellnote.com;
+    root /home/max/swellnote/swellnote/static;
 
     server_name swellnote.com;
 
