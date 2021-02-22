@@ -1,0 +1,21 @@
+# The Gunicorn service for the swellnote API. Install at
+# /etc/systemd/system/swellnote-api.service and run sudo systemctl start swellnote-api
+[Unit]
+Description=swellnote API
+After=network.target
+
+[Service]
+Type=notify
+# Change if your name isn't Max
+User=max
+Group=max
+RuntimeDirectory=swellnote
+WorkingDirectory=/home/max/swellnote
+ExecStart=/home/max/swellnote/venv/bin/gunicorn -b unix:/tmp/swellnote.socket -w 2 swellnote:app 
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

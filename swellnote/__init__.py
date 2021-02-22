@@ -4,13 +4,13 @@ from . import db
 
 app = Flask(__name__)
 
-@app.route("/message", methods=["GET"])
+@app.route("/api/message", methods=["GET"])
 def get_random_message():
     """Return a random message to play the part of 'message in a bottle'."""
     return db.get_random_message()
 
 
-@app.route("/message", methods=["POST"])
+@app.route("/api/message", methods=["POST"])
 def create_message():
     content = request.form["content"]
     if not 2 <= len(content) <= 1023:

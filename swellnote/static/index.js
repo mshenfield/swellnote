@@ -42,7 +42,7 @@ function dismissMessageOverlay() {
 }
 
 function getMessage() {
-  fetch("http://localhost:5000/message")
+  fetch("/api/message")
     .then(res => res.text())
     .then(content => {
       message.textContent = content;
@@ -71,7 +71,7 @@ function sendMessage() {
   f = new FormData();
   f.set("content", editor.value);
 
-  fetch("http://localhost:5000/message", {
+  fetch("/api/message", {
     method: "POST",
     body: f
   });
