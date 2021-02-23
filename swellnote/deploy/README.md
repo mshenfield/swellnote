@@ -36,3 +36,19 @@ sudo systemctl reload swellnote
 ```
 
 To start the gunicorn workers.  nginx should already be serving the site.
+
+## Update
+
+To update the site
+
+* `git pull` the new version
+* active the virtual env (`. venv/bin/activate`)
+* install the updated package (`pip install .[deploy]`)
+
+Then [reload gunicorn (`kill -HUP $MAINPID`)](https://docs.gunicorn.org/en/stable/faq.html#how-do-i-reload-my-application-in-gunicorn). You can find `$MAINPID` by running
+`systemctl status swellnote-api`.
+
+## Managing Gunicorn
+
+Check out [the Gunicorn Signals documentation](https://docs.gunicorn.org/en/stable/signals.html) for info on how to reload configuration, change
+worker count, etc., with signals.
