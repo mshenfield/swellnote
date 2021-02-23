@@ -6,7 +6,7 @@ After=network.target
 
 [Service]
 Type=notify
-# Change if your name isn't Max
+# TODO: Make a dedicated user for this and move the db to a reasonable spot instead of my home dir
 User=max
 Group=max
 WorkingDirectory=~

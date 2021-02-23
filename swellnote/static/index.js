@@ -1,7 +1,7 @@
 const quillButton = document.querySelector(".quill-button");
 const bottle = document.querySelector("#bottle");
 const messageOverlay = document.querySelector(".message-overlay");
-const message = document.querySelector(".scroll__message");
+const scrollMessage = document.querySelector(".scroll__message");
 const scroll = document.querySelector(".scroll");
 const editor = document.querySelector(".scroll__editor");
 const sendButton = document.querySelector(".send-button");
@@ -43,9 +43,9 @@ function dismissMessageOverlay() {
 
 function getMessage() {
   fetch("/api/message")
-    .then(res => res.text())
-    .then(content => {
-      message.textContent = content;
+    .then(res => res.json())
+    .then(message => {
+      scrollMessage.textContent = message.content;
       bottle.classList.add("bottle--visible");
     });
 }
@@ -68,12 +68,14 @@ sendButton.addEventListener("click", (event) => {
  * TODO: Only allow sending a message very 10 minutes
  */
 function sendMessage() {
-  f = new FormData();
-  f.set("content", editor.value);
+  message = { "content": editor.value };
 
   fetch("/api/message", {
     method: "POST",
-    body: f
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(message),
   });
 }
 

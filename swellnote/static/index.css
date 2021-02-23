@@ -55,8 +55,7 @@ body {
   width: 100%;
 }
 
-/* The SVGs scale based on the width, so no height should be specified.
-*/
+/* The SVGs scale based on the width, so no height should be specified.*/
 #surf {
   position: absolute;
   width: 100%;
@@ -111,7 +110,24 @@ body {
   transition: visibility 0s 0s, opacity 2s ease-in;
 }
 
-.quill-button {
+.bottom-button {
+  --side-margin: 3%;
+  --size: 64px;
+  position: absolute;
+  bottom: 21%;
+}
+
+mute-toggle.bottom-button {
+  left: var(--side-margin);
+  height: var(--size);
+  width: var(--size);
+
+  background-color: rgba(0, 0, 0, .2);
+  border: solid 3px deepskyblue;
+}
+
+
+.bottom-button.quill-button {
   /* Reset button appearance */
   -moz-appearance: none;
   appearance: none;
@@ -119,17 +135,15 @@ body {
   padding: 0;
   border: none;
 
-  position: absolute;
-  bottom: 21%;
-  right: 3%;
+  right: var(--side-margin);
 
   background: transparent;
   border: 2px solid #FFFFFF;
   border-radius: 10px;
   transform: rotate(45deg);
   cursor: pointer;
-  height: 64px;
-  width: 64px;
+  height: var(--size);
+  width: var(--size);
 }
 
 .quill-button__quill {
@@ -167,7 +181,8 @@ body {
 .scroll {
   background-color: wheat;
   min-height: 100px;
-  width: 40%;
+  width: 50%;
+  min-width: 15em;
 }
 .scroll__top {
   border-bottom: tan solid 3px;
@@ -259,15 +274,4 @@ body {
 
   cursor: pointer;
   padding: 3px;
-}
-
-mute-toggle {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  height: 64px;
-  width: 64px;
-
-  background-color: rgba(0, 0, 0, .2);
-  border: solid 3px deepskyblue;
 }
