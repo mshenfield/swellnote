@@ -52,3 +52,8 @@ Then [reload gunicorn (`kill -HUP $MAINPID`)](https://docs.gunicorn.org/en/stabl
 
 Check out [the Gunicorn Signals documentation](https://docs.gunicorn.org/en/stable/signals.html) for info on how to reload configuration, change
 worker count, etc., with signals.
+
+
+## HTTPS
+
+I followed [the Let's Encrypt instructions](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx) to set up a TLS certificate on my server.
