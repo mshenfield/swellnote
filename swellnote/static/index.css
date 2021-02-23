@@ -111,7 +111,7 @@ body {
 }
 
 .bottom-button {
-  --side-margin: 3%;
+  --side-margin: 5%;
   --size: 64px;
   position: absolute;
   bottom: 21%;
