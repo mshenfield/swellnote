@@ -56,4 +56,4 @@ worker count, etc., with signals.
 
 ## HTTPS
 
-I followed [the Let's Encrypt instructions](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx) to set up a TLS certificate on my server.
+I followed [the Let's Encrypt instructions](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx) to set up a TLS certificate on my server.  I also [set up HSTS preloading](https://hstspreload.org/).

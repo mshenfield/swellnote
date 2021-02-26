@@ -275,3 +275,13 @@ mute-toggle.bottom-button {
   cursor: pointer;
   padding: 3px;
 }
+
+.texture-overlay {
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: url('noise.webp');
+}
