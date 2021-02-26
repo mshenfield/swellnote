@@ -25,10 +25,19 @@ body {
 /* End Resets */
 
 /* Landscape */
+#landscape {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 500px;
+}
+
 #sky {
   background: linear-gradient(180deg, #00659E 16%, #4197C7 61.87%, #87C0DF 88.54%, #A3DAF9 98.44%);
-  height: 33.33%;
-  min-height: 250px;
+  flex-grow: 5;
+  position: relative;
+  /* Set a minimum height that's big enough to hold the sun + some margin */
+  min-height: 200px
 }
 
 #sun {
@@ -45,17 +54,16 @@ body {
 
 #ocean {
   background: linear-gradient(180deg, #1071A8 0%, #318ABD 50.25%, #7AC7CC 100%);
-  height: 28.33%;
+  flex-grow: 4;
 }
 
 #surf-and-sand {
-  height: 20%;
   position: relative;
   top: -6%;
   width: 100%;
 }
 
-/* The SVGs scale based on the width, so no height should be specified.*/
+/* The SVGs scale based on the width, so height should not be specified.*/
 #surf {
   position: absolute;
   width: 100%;
@@ -180,7 +188,6 @@ mute-toggle.bottom-button {
 
 .scroll {
   background-color: wheat;
-  min-height: 100px;
   width: 50%;
   min-width: 15em;
 }
@@ -235,6 +242,7 @@ mute-toggle.bottom-button {
 .scroll__editor {
   font: 50px/1.4 "Kristi", serif;
   padding: 25px;
+  min-height: 300px;
 }
 .scroll__editor {
   /* Reset the textarea appearance */
@@ -243,7 +251,6 @@ mute-toggle.bottom-button {
   background: none;
   border: none;
   resize: none;
-  height: 100%;
   width: 100%;
 }
 .scroll__editor:focus {
