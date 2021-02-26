@@ -34,33 +34,50 @@ body {
 
 #sky {
   background: linear-gradient(180deg, #00659E 16%, #4197C7 61.87%, #87C0DF 88.54%, #A3DAF9 98.44%);
-  flex-grow: 5;
-  position: relative;
+  flex-grow: 3;
+  /* Don't size it based on the sun */
+  flex-basis: 0;
   /* Set a minimum height that's big enough to hold the sun + some margin */
-  min-height: 200px
+  min-height: 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
 }
 
 #sun {
   border-radius: 50%;
   background: linear-gradient(180deg, #F79400 36.12%, #F7A934 68.84%, #F9C476 100%);
-  --size: 160px;
+  --size: 200px;
   height: var(--size);
   width: var(--size);
   
-  position: absolute;
-  right: 12%;
-  top: 10%;
+  position: relative;
+  right: 220px;
 }
 
 #ocean {
   background: linear-gradient(180deg, #1071A8 0%, #318ABD 50.25%, #7AC7CC 100%);
-  flex-grow: 4;
+  height: 250px;
+  /* Keep the reflections a consistent size but let them overflow */
+  overflow-x: clip;
+  position: relative;
+}
+
+#reflections {
+  /* Hand tuned off of Figma design, keep it at a fixed size on all screens */
+  width: 1200px;
+  position: absolute;
+  top: -6px;
+  right: 0px;
 }
 
 #surf-and-sand {
   position: relative;
-  top: -6%;
+  top: -38px;
   width: 100%;
+  overflow-x: clip;
 }
 
 /* The SVGs scale based on the width, so height should not be specified.*/
@@ -88,8 +105,8 @@ body {
 
 #sand {
   background: linear-gradient(180deg, #C1B0B8 0%, #FFE1C2 78.65%);
-  height: 38.33%;
-  min-height: 200px;
+  flex-grow: 3;
+  flex-basis: 0;
   position: relative;
 }
 
