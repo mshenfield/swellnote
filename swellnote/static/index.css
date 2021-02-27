@@ -38,7 +38,7 @@ body {
   /* Don't size it based on the sun */
   flex-basis: 0;
   /* Set a minimum height that's big enough to hold the sun + some margin */
-  min-height: 220px;
+  min-height: 17vw;
 
   display: flex;
   align-items: center;
@@ -49,35 +49,32 @@ body {
 #sun {
   border-radius: 50%;
   background: linear-gradient(180deg, #F79400 36.12%, #F7A934 68.84%, #F9C476 100%);
-  --size: 200px;
+  --size: 12vw;
   height: var(--size);
   width: var(--size);
   
   position: relative;
-  right: 220px;
+  right: 13vw;
 }
 
 #ocean {
   background: linear-gradient(180deg, #1071A8 0%, #318ABD 50.25%, #7AC7CC 100%);
-  height: 250px;
+  height: 16vw;
   /* Keep the reflections a consistent size but let them overflow */
-  overflow-x: clip;
   position: relative;
 }
 
 #reflections {
-  /* Hand tuned off of Figma design, keep it at a fixed size on all screens */
-  width: 1200px;
+  width: 80vw;
   position: absolute;
-  top: -6px;
+  top: -.3vw;
   right: 0px;
 }
 
 #surf-and-sand {
   position: relative;
-  top: -38px;
+  top: -3vw;
   width: 100%;
-  overflow-x: clip;
 }
 
 /* The SVGs scale based on the width, so height should not be specified.*/
