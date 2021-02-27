@@ -50,22 +50,12 @@ class MuteToggle extends HTMLElement {
     audio.src = this.getAttribute("src");
     const toggle = this.shadowRoot.querySelector("#mute-toggle-button");
 
-    // For mobile browsers, the `autoplay` attribute isn't honored, even if initially muted.
-    // Track whether the audio is actually playing so we can manually trigger a `play()` if needed.
-    // https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide
-    var isPlaying = false;
-    audio.addEventListener("play", () => isPlaying = true);
     // Force initial muted state - Firefox remembers checkbox state otherwise
-    toggle.checked = true;
+    toggle.checked = audio.muted;
 
     toggle.addEventListener("input", e => {
       e.preventDefault();
-      audio.muted = toggle.checked;
-      // Manually play if not already.
-      if (!audio.muted && !isPlaying) {
-        audio.play();
-        isPlaying = true;
-      }
+      this.toggleMuted(toggle.checked);
     });
     
     // Using the <audio> "loop" attribute results in a conspicuous gap between
@@ -78,6 +68,16 @@ class MuteToggle extends HTMLElement {
         audio.play();
       }
     });
+  }
+
+  toggleMuted(isMuted) {
+    const audio = this.shadowRoot.querySelector("audio");
+    audio.muted = isMuted;
+    this.shadowRoot.querySelector("#mute-toggle-button").checked = isMuted;
+    // For mobile browsers, the `autoplay` attribute isn't honored, even if initially muted.
+    // Manually trigger a `play()` in case its needed.
+    // https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide
+    audio.play();
   }
 }
 

@@ -6,6 +6,15 @@ const scroll = document.querySelector(".scroll");
 const editor = document.querySelector(".scroll__editor");
 const sendButton = document.querySelector(".send-button");
 
+document.querySelector(".splash-screen--enter").addEventListener("click", () => {
+  document.querySelector("#splash-screen").classList.add("fade-out");
+  const muteToggle = document.querySelector("mute-toggle");
+  muteToggle.toggleMuted(/* isMuted= */ false);
+  // Display a bottle 5 seconds after the beach displays.
+  setTimeout(() => getMessage(), 5000);
+
+});
+
 // Display the message overlay for the existing message...
 bottle.addEventListener("click", () => {
   messageOverlay.classList.add("message-overlay--visible");
@@ -78,6 +87,3 @@ function sendMessage() {
     body: JSON.stringify(message),
   });
 }
-
-// Display a bottle 5 seconds after the page loads.
-setTimeout(() => getMessage(), 5000);
