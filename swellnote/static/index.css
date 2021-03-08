@@ -271,7 +271,7 @@ mute-toggle.bottom-button {
 }
 .scroll__message,
 .scroll__editor {
-  font: 16px/1.9 "Gloria Hallelujah", cursive, serif;
+  font: 24px/1.9 "Gloria Hallelujah", cursive, serif;
   padding: 2em;
   min-height: 300px;
 }
