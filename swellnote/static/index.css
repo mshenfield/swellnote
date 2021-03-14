@@ -156,40 +156,19 @@ button {
   transition: visibility 0s 0s, opacity 2s ease-in;
 }
 
-.bottom-button {
-  --side-margin: 5%;
-  --size: 64px;
+.controls {
   position: absolute;
   bottom: 21%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
 }
 
-mute-toggle.bottom-button {
-  left: var(--side-margin);
-  height: var(--size);
-  width: var(--size);
-
-  background-color: rgba(0, 0, 0, .2);
-  border: solid 3px deepskyblue;
-}
-
-
-.bottom-button.quill-button {
-  right: var(--side-margin);
-
-  background: transparent;
-  border: 2px solid #FFFFFF;
-  border-radius: 10px;
-  transform: rotate(45deg);
-  cursor: pointer;
-  height: var(--size);
-  width: var(--size);
-}
-
-.quill-button__quill {
-  /* Counteract the parent element's rotation */
-  transform: rotate(-45deg);
-  height: 45px;
-  width: 35px;
+.controls > * {
+  padding: 8px;
 }
 
 .message-overlay {

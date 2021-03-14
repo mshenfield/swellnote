@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="index.css">
 <link rel="icon" type="image/png" href="favicon.png">
 <script defer src="index.js"></script>
-<script defer src="mute-toggle.js"></script>
+<script type="module" src="swellnote-button.js"></script>
+<script type="module" src="mute-toggle.js"></script>
 
 <div id="landscape">
   <div id="sky">
@@ -24,13 +25,13 @@
       <img src="surf.svg" id="surf">
     </div>
     <img src="bottle.svg" id="bottle" class="bottle">
-    <mute-toggle class="bottom-button" src="ocean.wav"></mute-toggle>
-    <button type="button" class="quill-button bottom-button">
-      <img class="quill-button__quill" src="quill.svg">
-    </button>
+
+    <div class="controls">
+      <swellnote-button class="quill-button" icon="quill"></swellnote-button>
+      <mute-toggle button-size="small" src="ocean.wav"></mute-toggle>
+    </div>
   </div>
 </div>
-
 
 <div class="message-overlay">
   <div class="scroll">
