@@ -131,11 +131,16 @@ button {
   position: relative;
 }
 
-#bottle {
+#bottle-container {
   position: absolute;
-  left: 50%;
   top: 25%;
-
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+#bottle {
   height: 73px;
   width: 100px;
 }
@@ -158,7 +163,7 @@ button {
 
 .controls {
   position: absolute;
-  bottom: 21%;
+  bottom: 6%;
 
   display: flex;
   align-items: center;
@@ -168,7 +173,11 @@ button {
 }
 
 .controls > * {
-  padding: 8px;
+  margin: 8px;
+}
+.controls > .feedback-button {
+  /* TODO: Implement the feedback button and make visible */
+  visibilitY: hidden;
 }
 
 .message-overlay {
