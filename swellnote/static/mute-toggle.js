@@ -17,6 +17,8 @@ class MuteToggle extends HTMLElement {
   connectedCallback() {
     const audio = this.shadowRoot.querySelector("audio");
     audio.src = this.getAttribute("src");
+    // Initialize values to the current audio state.
+    this.setIcon(audio.muted);
 
     // Force initial muted state - Firefox remembers checkbox state otherwise
     this.muteButton.addEventListener("click", e => {
@@ -48,6 +50,10 @@ class MuteToggle extends HTMLElement {
     // https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide
     audio.play();
 
+    this.setIcon(isMuted);
+  }
+
+  setIcon(isMuted) {
     this.muteButton.icon = isMuted ? "speaker-muted" : "speaker";
   }
 }
