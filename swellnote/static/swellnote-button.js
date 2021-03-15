@@ -1,8 +1,17 @@
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
-:host, :host([button-size="normal"]) {
+:host,  {
     display: inline-block;
+
+    --fill-color: #98878B;
+    --white: white;
+    --light-opacity: .33;
+    --medium-opacity: .66;
+}
+
+/*** button-size attribute ***/
+:host, :host([button-size="normal"]) {
     height: 90px;
     width: 90px;
 }
@@ -10,19 +19,8 @@ template.innerHTML = `
     height: 56px;
     width: 56px;
 }
-.border {
-    stroke: #FFFEFE;
-    stroke-width: 2;
-}
-.fill {
-    fill: #98878B;
-    opacity: .33;
-}
-.icon * {
-    fill: white;
-}
 
-/* Reset the button style. */
+/*** RESETS ***/
 button {
     appearance: none;
     -moz-appearance: none;
@@ -36,11 +34,46 @@ button {
     margin: 0;
     padding: 0;
 }
+button:focus, button:active {
+    outline: none;
+}
+
+/*** BORDER ***/
+.border {
+    stroke: var(--fill-color);
+    stroke-opacity: var(--light-opacity);
+    stroke-width: 2;
+}
+:host([highlighted]) .border, button:hover .border, button:focus .border, button:active .border {
+    stroke: var(--white);
+    stroke-opacity: 1;
+}
+
+/*** FILL ***/
+.fill {
+    fill: var(--fill-color);
+    opacity: var(--light-opacity);
+}
+button:hover .fill {
+    fill: var(--white);
+}
+button:focus .fill, button:active .fill {
+    opacity: var(--medium-opacity);
+}
+
+/*** ICON ***/
+.icon * {
+    fill: var(--white);
+}
+button[disabled] .icon * {
+    fill: var(--fill-color);
+}
 
 </style>
-<button type="button">
+
+<button class="focusable" tabindex="0" type="button">
     <!-- Adapted from Figma design -->
-    <svg viewBox="0 0 98 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg aria-hidden="true" viewBox="0 0 98 98" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect class="border" x="15" y="15" width="68" height="68" rx="4" transform="rotate(-45 49 49)"/>
         <rect class="fill" x="19" y="19" width="60" height="60" rx="3" transform="rotate(-45 49 49)"/>
         <g class="icon"></g>
