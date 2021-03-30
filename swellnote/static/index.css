@@ -328,6 +328,9 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+
+  /* Allow SVG to overflow horizontally so it can use constant width */
+  overflow-x: hidden;
 }
 
 #splash-screen.fade-out {
@@ -352,9 +355,14 @@ button {
 }
 
 .splash-screen--line {
-  width: 100%;
+  min-width: calc(100% + 200px);
+  /* Use a constant width so that the size of the quill and speed of the animation is
+    constant across screens. */
+  width: 1440px;
+  /* Anchor it to the left so there is a consistent pause. */
+  left: -200px;
   position: absolute;
-  top: 35%;
+  top: 25%;
 }
 
 .splash-screen--line #quill {
