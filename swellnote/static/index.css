@@ -350,3 +350,39 @@ button {
   margin-bottom: 2em;
   max-width: 600px;
 }
+
+.splash-screen--line {
+  width: 100%;
+  position: absolute;
+  top: 35%;
+}
+
+.splash-screen--line #quill {
+  /* Copied from the line SVG export in Figma. */
+  offset-path: path(
+    "M1440 1.47798C1440 1.47798 1349.24 28.3422 1278.26 32.6742C1172.88 39.1065 1126.09 1.78014 1019.13 1.47798C909.6 1.16855 862.471 30.9724 753.043 32.6742C626.757 34.6383 568.696 1.47798 441.739 1.47798C332.205 1.47798 284.024 38.2733 175.652 32.6742C99.6224 28.7461 0 1.47798 0 1.47798");
+  offset-distance: 100%;
+  offset-rotate: 0deg;
+  animation: quill-dash 5s linear forwards;
+}
+
+@keyframes quill-dash {
+  to {
+    offset-distance: 0%;
+  }
+}
+
+/* Use the standard internet hack to animate drawing a line */
+.splash-screen--line #line {
+  /* Units are relative to the SVG viewport. Really not sure where the extra 16px comes from*/
+  stroke-dasharray: 1456;
+  stroke-dashoffset: -1456;
+  /** Keep in sync with splash-screen--quill animateMotion in index.html*/
+  animation: dash 5s linear forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
