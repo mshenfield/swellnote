@@ -20,6 +20,12 @@ template.innerHTML = `
     width: 56px;
 }
 
+/* Required on Chrome for SVG to fill the alloted space */
+svg {
+    height: 100%;
+    width: 100%;
+}
+
 /*** RESETS ***/
 button {
     appearance: none;
@@ -72,7 +78,7 @@ button[disabled] .icon * {
 </style>
 
 <button class="focusable" tabindex="0" type="button">
-    <!-- Adapted from Figma design -->
+    <!-- Adapted from the Figma design with cleaner numbers -->
     <svg viewBox="0 0 98 98" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect class="border" x="15" y="15" width="68" height="68" rx="4" transform="rotate(-45 49 49)"/>
         <rect class="fill" x="19" y="19" width="60" height="60" rx="3" transform="rotate(-45 49 49)"/>
