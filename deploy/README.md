@@ -32,7 +32,7 @@ pip install .[deploy]
 Once you've completed the steps above, copy the files in this folder to the destinations described in their comments.  Then run
 
 ```
-sudo systemctl reload swellnote
+sudo systemctl reload swellnote-api
 ```
 
 To start the gunicorn workers.  nginx should already be serving the site.
