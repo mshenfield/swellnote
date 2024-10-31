@@ -12,7 +12,7 @@ Group=max
 WorkingDirectory=~
 # I have one vCPU on DigitalOcean right now. Gunicorn recommends 2n + 1, but that felt like
 # a lot with nginx running, so I just did 2n.
-ExecStart=/home/max/swellnote/venv/bin/gunicorn -b unix:/tmp/swellnote.sock -w 2 swellnote:app
+ExecStart=/home/max/swellnote/venv/bin/gunicorn -b unix:/tmp/swellnote.sock -w 2 swellnote.swellnote:app
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed
 TimeoutStopSec=5
